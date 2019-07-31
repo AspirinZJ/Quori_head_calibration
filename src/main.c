@@ -8,7 +8,6 @@
 #include <stddef.h>
 #include "rtwtypes.h"
 #include "rotation_theta.h"
-#include "rotation_theta_initialize.h"
 
 const int SCREENWIDTH = 1920.0;
 const int SCREENHEIGHT = 1080.0;
@@ -62,7 +61,6 @@ void displayFunc() // display function
     double theta, psi, Theta, Psi;
     double t; // parametric equation of a circle
 
-    rotation_theta_initialize();
     glColor3f(1.0, 0.2, 0.2); // color of the circle
     glClear(GL_COLOR_BUFFER_BIT);
 
