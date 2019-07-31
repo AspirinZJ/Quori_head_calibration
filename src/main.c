@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <GL/glut.h> // using glut
-#include "rt_nonfinite.h"
+// #include "rt_nonfinite.h"
 #include "sphereToimage.h"
-#include "sphereToimage_initialize.h"
 #include <stddef.h>
-#include "rtwtypes.h"
 #include "rotation_theta.h"
 
 const int SCREENWIDTH = 1920.0;
@@ -23,7 +21,6 @@ void kbdFunc(unsigned char key, int x, int y);
 
 int main(int argc, char *argv[])
 {
-    sphereToimage_initialize();
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH); // double buffering
     glutInitWindowPosition(0, 0);
@@ -67,7 +64,7 @@ void displayFunc() // display function
     // draw the circles
     for (float theta0 = 0.22 * Pi; theta0 < 0.9 * Pi; theta0 += 0.12 * Pi)
     {
-        for (float psi0 = 0; psi0 < 2 * Pi; psi0 += 0.25 * Pi)
+        for (float psi0 = 0; psi0 < 2 * Pi; psi0 += 0.5 * Pi)
         {
             for (int i = 0; i < polyNum; i++)
             {
