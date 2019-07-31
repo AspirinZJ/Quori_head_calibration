@@ -14,7 +14,7 @@
 /* Include Files */
 #include <stddef.h>
 #include <stdlib.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 
 /* Function Declarations */
 extern void sphereToplane(double theta, double psi, double R, double rm, double ro, double h, double epsilon, double L, double *xp, double *yp);

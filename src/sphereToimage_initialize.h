@@ -9,7 +9,7 @@
 /* Include Files */
 #include <stddef.h>
 #include <stdlib.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 
 /* Function Declarations */
 extern void sphereToimage_initialize(void);

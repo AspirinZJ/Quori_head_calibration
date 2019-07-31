@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 #include <stdlib.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 
 extern void sphereToimage(double theta, double psi, double H, double W, double *px, double *py, double dx, double dy);
 

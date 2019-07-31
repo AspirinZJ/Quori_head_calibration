@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 #include <stdlib.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 
 extern void rotation_theta(double theta0, double psi0, double psiO, double dtheta, double *theta, double *psi);
 

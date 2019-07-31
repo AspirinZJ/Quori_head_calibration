@@ -10,7 +10,7 @@
 #endif
 
 #include <stddef.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 
 extern real_T rtInf;
 extern real_T rtMinusInf;

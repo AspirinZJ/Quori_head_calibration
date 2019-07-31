@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 #include <stdlib.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 
 extern void b_log(creal_T *x);
 

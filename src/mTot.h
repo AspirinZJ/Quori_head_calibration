@@ -14,7 +14,7 @@
 /* Include Files */
 #include <stddef.h>
 #include <stdlib.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 
 /* Function Declarations */
 extern double mTot(double m, double d, double rm, double R, double del);

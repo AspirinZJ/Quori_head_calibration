@@ -11,7 +11,7 @@
 #ifndef RTGETINF_H
 #define RTGETINF_H
 #include <stddef.h>
-#include "rtwtypes.h"
+#include "tmwtypes.h"
 #include "rt_nonfinite.h"
 
 extern real_T rtGetInf(void);
