@@ -10,9 +10,9 @@
 const int SCREENWIDTH = 1920.0;
 const int SCREENHEIGHT = 1080.0;
 // const double RADIUS = 3;  // the radius of the sphere screen
-const double RADIUS = 4.0;          // the radius of the sphere screen
-double dx = -2.51;                  // the parameter for calibrating the x-axis installation error
-double dy = -1.14;                  // the parameter for calibrating the y-axis installation error
+const float RADIUS = 4.0;           // the radius of the sphere screen
+double dx = -2.57;                  // the parameter for calibrating the x-axis installation error
+double dy = -1.18;                  // the parameter for calibrating the y-axis installation error
 int Glut_Handle1_Window_FullScreen; // Glut create handle
 
 void displayFunc();
@@ -49,7 +49,7 @@ void displayFunc() // display function
     double psi0;                           // initial azimuthal angle
     double dtheta = theta0 - Pi / 2;
     double px, py;
-    double semiMajor = 0.3, semiMinor = 0.3; // semi-major and semi-minor
+    double semiMajor = 0.5, semiMinor = 0.5; // semi-major and semi-minor
     double phi = 0;
     int polyNum = 100; // use a 100-edge polygon to approximate a circle
     double CoordX[100], CoordY[100];
@@ -58,13 +58,13 @@ void displayFunc() // display function
     double theta, psi, Theta, Psi;
     double t; // parametric equation of a circle
 
-    glColor3f(1.0, 0.2, 0.2); // color of the circle
+    glColor3f(1.0, 0.5, 0.5); // color of the circle
     glClear(GL_COLOR_BUFFER_BIT);
 
     // draw the circles
-    for (float theta0 = 0.22 * Pi; theta0 < 0.9 * Pi; theta0 += 0.12 * Pi)
+    for (float theta0 = 0.27 * Pi; theta0 < 0.9 * Pi; theta0 += 0.12 * Pi)
     {
-        for (float psi0 = 0; psi0 < 2 * Pi; psi0 += 0.5 * Pi)
+        for (float psi0 = 0.0f; psi0 <= 2.0f * Pi; psi0 += 0.2f * Pi)
         {
             for (int i = 0; i < polyNum; i++)
             {
@@ -78,10 +78,13 @@ void displayFunc() // display function
                 // approximate an circle from a flat plane to a sphere
                 psi = xRot / (RADIUS * sin(theta0)) + psi0;
                 theta = theta0 - yRot / RADIUS;
-                rotation_theta(theta, psi, psi0, dtheta, &Theta, &Psi);                 // rotate the circle from the equator to other places
-                sphereToimage(Theta, Psi, SCREENHEIGHT, SCREENWIDTH, &px, &py, dx, dy); // warp the 3d spherical position onto a 2D image plane
-                px = px - SCREENWIDTH / 2;                                              // pixel coordinates
-                py = py - SCREENHEIGHT / 2;                                             // pixel coordinates
+                rotation_theta(theta, psi, psi0, dtheta, &Theta, &Psi); // rotate the circle from the equator to other places
+                float coe1 = 0.01 * Pi;
+                float coe2 = -2;
+                Theta += coe1 * exp(coe2 * Theta);
+                sphereToimage(RADIUS, Theta, Psi, SCREENHEIGHT, SCREENWIDTH, &px, &py, dx, dy); // warp the 3d spherical position onto a 2D image plane
+                px = px - SCREENWIDTH / 2;                                                      // pixel coordinates
+                py = py - SCREENHEIGHT / 2;                                                     // pixel coordinates
                 // py = -py;
                 CoordX[i] = 2 * px / SCREENHEIGHT;
                 CoordY[i] = 2 * py / SCREENHEIGHT;
